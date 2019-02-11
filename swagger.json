@@ -1,0 +1,249 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "description": "Basic Authentication system for Authenticating users.",
+    "title": "Authentication System"
+  },
+  "host": "127.0.0.1:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/login": {
+      "get": {
+        "description": "A basic login page for filling details.",
+        "responses": {
+          "200": {
+            "description": "response template render"
+          }
+        }
+      }
+    },
+    "/signup": {
+      "get": {
+        "description": "A basic Signup page for user registration.",
+        "responses": {
+          "200": {
+            "description": "response template render"
+          }
+        }
+      },
+      "post": {
+        "description": "Generates a token after all validations & verifications",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "First name of user",
+            "name": "fName",
+            "in": "formData"
+          },
+          {
+            "type": "string",
+            "description": "Last name of user",
+            "name": "lName",
+            "in": "formData"
+          },
+          {
+            "type": "string",
+            "description": "Email of user",
+            "name": "email",
+            "in": "formData"
+          },
+          {
+            "type": "string",
+            "description": "Password here..",
+            "name": "password",
+            "in": "formData"
+          },
+          {
+            "type": "string",
+            "description": "Phone number of user",
+            "name": "phone_no",
+            "in": "formData"
+          },
+          {
+            "type": "password",
+            "description": "Date of birth",
+            "name": "dob",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sign up Successful"
+          }
+        }
+      }
+    },
+    "/getToken": {
+      "post": {
+        "description": "Generates a token after all validations & verifications",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Email of user",
+            "name": "email",
+            "in": "formData"
+          },
+          {
+            "type": "password",
+            "description": "Password",
+            "name": "password",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successfully logged in."
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "description": "Show profile of user.",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Access token",
+            "name": "token",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Basic Profile of user"
+          }
+        }
+      }
+    },
+    "/uploadProfilePic": {
+      "post": {
+        "description": "To upload profile pic of user",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Access token",
+            "name": "token",
+            "in": "query"
+          },
+          {
+            "type": "file",
+            "description": "Profile pic here..",
+            "name": "image",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Database updated!"
+          }
+        }
+      }
+    },
+    "/viewPic": {
+      "get": {
+        "description": "Shows profile pic of user.",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Access token",
+            "name": "token",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gives image link"
+          }
+        }
+      }
+    },
+    "/removePic": {
+      "delete": {
+        "description": "Deletes profile pic of user from database.",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Access token",
+            "name": "token",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Image removed successfully"
+          }
+        }
+      }
+    },
+    "/forgetPassword": {
+      "post": {
+        "description": "Generates a 5-min token for reseting password",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Email of user",
+            "name": "email",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "gives 5 min token"
+          }
+        }
+      }
+    },
+    "/resetPassword": {
+      "post": {
+        "description": "Generates a new password",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Access Token",
+            "name": "token",
+            "in": "formData"
+          },
+          {
+            "type": "string",
+            "description": "New Password",
+            "name": "password",
+            "in": "formData"
+          },
+          {
+            "type": "string",
+            "description": "New Password again",
+            "name": "confirm_password",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resets password to newly given password"
+          }
+        }
+      }
+    },
+    "/deleteAccount": {
+      "delete": {
+        "description": "Deletes account of user",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Access Token",
+            "name": "token",
+            "in": "formData"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deletes account of user"
+          }
+        }
+      }
+    }
+  }
+}
