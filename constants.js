@@ -45,7 +45,7 @@ const SCHEMA_FOR_FORGET = joi.object().keys({
 const CONNECTION = sql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '',
+  password: 'capd1234',
   database: 'auth',
 })
 

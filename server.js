@@ -7,7 +7,7 @@ const constants = require('./constants')
 const upload = require('express-fileupload')
 const swaggerUi = require('swagger-ui-express'); 
 const swaggerDocument = require('./swagger.json');
-
+const request = require('request')
 
 //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Using all required Middlewares <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 const APP = express()
@@ -123,6 +123,17 @@ APP.listen(3000, () => {
       throw err
     } else {
       console.log("Congrats.. You're Connected!");
+      request('https://socket-chat-free.herokuapp.com',(err,response,body)=>{
+        if (err) {
+          console.log(err);
+          
+        } else {
+          console.log(">>>>>>>>>>>>RESPONSE>>>>>>>>>>>>>>>>>>",response);
+          console.log(">>>>>>>>>>>>BODY>>>>>>>>>>>>>",body)
+          
+        }
+      })
+
     }
   })
 })

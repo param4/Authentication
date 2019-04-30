@@ -21,7 +21,9 @@
     "jsonwebtoken": "^8.4.0",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.9",
+    "request": "^2.88.0",
     "sql": "^0.78.0",
+    "swagger-express": "^1.0.5",
     "swagger-ui-express": "^4.0.2"
   }
 }
